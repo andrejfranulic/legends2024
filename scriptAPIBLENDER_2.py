@@ -1,19 +1,5 @@
 import bpy
 
-# Definir las propiedades para almacenar la entrada y salida de texto
-def register():
-    bpy.types.Scene.my_text_input = bpy.props.StringProperty(
-        name="Texto de Entrada"
-    )
-
-    bpy.types.Scene.my_text_output = bpy.props.StringProperty(
-        name="Texto de Salida"
-    )
-
-def unregister():
-    del bpy.types.Scene.my_text_input
-    del bpy.types.Scene.my_text_output
-
 # Panel para mostrar la entrada y salida de texto
 class TEXT_IO_PT_Panel(bpy.types.Panel):
     bl_label = "Entrada y Salida de Texto"
