@@ -1,18 +1,22 @@
 import bpy
 
+def  delete_all_objects():
+     bpy.ops.object.select_all(action='SELECT')
+     bpy.ops.object.delete()
+
 class SimpleOperator(bpy.types.Operator):
     """Tooltip"""
-    bl_idname = "object.simple_operator"
-    bl_label = "Simple Object Operator"
+    bl_idname = "object.eliminator"
+    bl_label = "Eliminatodo"
 
     def execute(self, context):
         # Aquí va la lógica de tu operador
-        context.object.location.x += 1.0
+        delete_all_objects()
         return {'FINISHED'}
     
 class SimplePanel(bpy.types.Panel):
     """Crea un Panel en la región de la barra de herramientas"""
-    bl_label = "Simple Panel"
+    bl_label = "Panel de exterminazión"
     bl_idname = "OBJECT_PT_simple"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
@@ -20,7 +24,7 @@ class SimplePanel(bpy.types.Panel):
 
     def draw(self, context):
         layout = self.layout
-        layout.operator(SimpleOperator.bl_idname, icon='WORLD_DATA')
+        layout.operator(SimpleOperator.bl_idname, icon='REMOVE')
 
 def register():
     bpy.utils.register_class(SimplePanel)
