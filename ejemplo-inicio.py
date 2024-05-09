@@ -1,6 +1,6 @@
 import bpy
 import random as r
-
+#esto borra todo
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.object.delete(use_global=False)
 
