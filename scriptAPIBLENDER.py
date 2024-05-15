@@ -2,7 +2,7 @@ import bpy
 import random as r
 class SimpleOperator(bpy.types.Operator):
     """Tooltip"""
-    bl_idname = "object.s_p"
+    bl_idname = "object.op1"
     bl_label = "Crear"
 
     def execute(self, context):
@@ -13,13 +13,13 @@ class SimpleOperator(bpy.types.Operator):
 
 class SimpleOperator2(bpy.types.Operator):
     """Tooltip"""
-    bl_idname = "object.s_p"
+    bl_idname = "object.s_op2"
     bl_label = "Borrar"
 
     def execute(self, context):
         # Aquí va la lógica de tu operador
-        for i in range(10):
-            bpy.ops.mesh.primitive_cube_add(size=2, enter_editmode=False, align='WORLD', location=(r.random(),r.random(),r.random()), scale=(.1,.1,.1))
+        bpy.ops.object.select_all(action='SELECT')
+        bpy.ops.object.delete(use_global=False)
         return {'FINISHED'}
     
 class SimplePanel(bpy.types.Panel):
@@ -38,6 +38,7 @@ class SimplePanel(bpy.types.Panel):
 def register():
     bpy.utils.register_class(SimplePanel)
     bpy.utils.register_class(SimpleOperator)
+    bpy.utils.register_class(SimpleOperator2)
 
 def unregister():
     bpy.utils.unregister_class(SimplePanel)
